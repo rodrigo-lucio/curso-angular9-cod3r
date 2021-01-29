@@ -20,12 +20,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateModule } from '@angular/material-moment-adapter';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HomeComponent } from './views/home/home.component';
 import { OccurrenceComponent } from './views/occurrence/occurrence.component';
-import { OccurrenceCreateComponent } from './components/occurrence/occurrence-create/occurrence-create.component'
+import { OccurrenceCreateComponent } from './components/occurrence/occurrence-crud/occurrence-crud.component'
 
 import { RedDirective } from './directives/red.directive';
 import { ForDirective } from './directives/for.directive';
@@ -36,8 +37,8 @@ import { MatInputModule } from '@angular/material/input';
 import { OccurrenceReadComponent } from './components/occurrence/occurrence-read/occurrence-read.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { OccurrenceUpdateComponent } from './components/occurrence/occurrence-update/occurrence-update.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,6 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     RedDirective,
     ForDirective,
     OccurrenceReadComponent,
-    OccurrenceUpdateComponent,
     ConfirmDialogComponent,
   ],
   imports: [
@@ -71,10 +71,13 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MomentDateModule
   ],
   entryComponents: [ConfirmDialogComponent],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

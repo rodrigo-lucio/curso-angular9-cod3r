@@ -1,5 +1,4 @@
-import { OccurrenceUpdateComponent } from './components/occurrence/occurrence-update/occurrence-update.component';
-import { OccurrenceCreateComponent } from './components/occurrence/occurrence-create/occurrence-create.component';
+import { OccurrenceCreateComponent } from './components/occurrence/occurrence-crud/occurrence-crud.component';
 import { OccurrenceComponent } from './views/occurrence/occurrence.component';
 
 import { HomeComponent } from './views/home/home.component';
@@ -21,8 +20,8 @@ const routes: Routes = [
     component: OccurrenceCreateComponent
   },
   {
-    path: "occurrence/update/:id",
-    component: OccurrenceUpdateComponent
+    path: "occurrence/:id",
+    component: OccurrenceCreateComponent
   },
 
 
