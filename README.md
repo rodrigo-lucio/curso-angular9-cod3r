@@ -13,7 +13,7 @@ Utilizado [Angular CLI](https://github.com/angular/angular-cli) versão 10.0.1.
 Neste projeto foram utilizadas as seguintes tecnologias:
 
 - [Angular](https://angular.io/)
-- [Biblioteca Angular Material](https://material.angular.io/)
+- Biblioteca de componentes [Angular Material](https://material.angular.io/)
 - Back-end com [JSON Server](https://www.npmjs.com/package/json-server)
 
 ## ▶️ Utilização
