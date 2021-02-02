@@ -11,7 +11,7 @@ export class OccurrenceComponent implements OnInit {
 
   constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
-      title: 'Cadastro de Ocorrência',
+      title: 'Cadastro de Ocorrências',
       icon: 'departure_board',
       routeUrl: '/occurrence'
     }

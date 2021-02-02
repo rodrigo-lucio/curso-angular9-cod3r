@@ -1,27 +1,36 @@
-# Frontend
+<h1 align="center">
+    <img src=".github/crud.png" />
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+## 💻 Projeto
 
-## Development server
+Front-end do projeto desenvolvido durante o curso Angular 9 - Essencial da [COD3R](https://github.com/cod3rcursos).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Utilizado [Angular CLI](https://github.com/angular/angular-cli) versão 10.0.1.
 
-## Code scaffolding
+## :rocket: Tecnologias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Neste projeto foram utilizadas as seguintes tecnologias:
 
-## Build
+- [Angular](https://angular.io/)
+- [Biblioteca Angular Material](https://material.angular.io/)
+- Back-end com [JSON Server](https://www.npmjs.com/package/json-server)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## ▶️ Utilização
 
-## Running unit tests
+Dentro da pasta do projeto, execute o comando `npm install` para instalar as todas as dependências necessárias.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Após isso, execute o comando `ng serve` para iniciar a aplicação.
 
-## Running end-to-end tests
+A projeto estará rodando em `http://localhost:4200`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+
+
+
+
+

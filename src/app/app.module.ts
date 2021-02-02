@@ -39,6 +39,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatListModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     MatDialogModule,
     MatSnackBarModule,
     HttpClientModule,

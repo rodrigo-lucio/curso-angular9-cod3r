@@ -4,6 +4,10 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from './../../confirm-dial
 import { OccurrenceService } from './../occurrence.service';
 import { Occurrence } from './../ocurrence.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+
+import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-occurrence-read',
@@ -12,8 +16,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class OccurrenceReadComponent implements OnInit {
 
-  occurrences: Occurrence[];
+  // occurrences: Occurrence[];
   displayedColumns: string[] = ['id', 'description', 'vehiclePlate', 'date', 'action'];
+
+  occurrencesData: Occurrence[] = [];
+  occurrences = null;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private occurrenceService: OccurrenceService, public dialog: MatDialog, private router: Router) { }
 
@@ -23,7 +32,9 @@ export class OccurrenceReadComponent implements OnInit {
 
   refresh(): void {
     this.occurrenceService.read().subscribe(occurrences => {
-      this.occurrences = occurrences;
+      this.occurrencesData = occurrences;
+      this.occurrences = new MatTableDataSource<Occurrence>(this.occurrencesData);
+      this.occurrences.paginator = this.paginator;
     });
   }
 
@@ -42,7 +53,12 @@ export class OccurrenceReadComponent implements OnInit {
         });
       }
     });
+  }
 
+  updateOccurrence(id: number): void {
+    this.router.navigate([`/occurrence/${id}`]);
   }
 
 }
+
+

@@ -24,16 +24,18 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>Ação</th>
             <td mat-cell *matCellDef="let occurrence">
-                <a routerLink="/occurrence/{{ occurrence.id }}">
-                    <i class="material-icons">edit</i>
-                </a>
+                <button mat-icon-button (click)="updateOccurrence(occurrence.id)">
+                    <mat-icon>edit</mat-icon>
+                </button>
                 <button mat-icon-button (click)="deleteConfirm(occurrence.id)">
-                    <i class="material-icons">delete</i>
+                    <mat-icon>delete</mat-icon>
                 </button>
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef=" displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
