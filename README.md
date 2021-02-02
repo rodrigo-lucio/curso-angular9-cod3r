@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src=".github/crud.png" />
+    <img src=".github/crud.PNG" />
 </h1>
 
 ## 💻 Projeto
