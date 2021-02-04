@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OccurrenceService } from '../occurrence.service';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 export const MY_DATE_FORMATS = {
   parse: {

@@ -1,3 +1,4 @@
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -76,7 +77,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatSortModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MomentDateModule
+    MomentDateModule,
+    MatGridListModule
   ],
   entryComponents: [ConfirmDialogComponent],
   providers: [MatDatepickerModule],
