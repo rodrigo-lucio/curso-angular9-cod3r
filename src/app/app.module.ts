@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -32,7 +33,8 @@ import { OccurrenceCreateComponent } from './components/occurrence/occurrence-cr
 import { RedDirective } from './directives/red.directive';
 import { ForDirective } from './directives/for.directive';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { OccurrenceReadComponent } from './components/occurrence/occurrence-read/occurrence-read.component';
@@ -67,9 +69,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatSlideToggleModule,
     MatSnackBarModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,

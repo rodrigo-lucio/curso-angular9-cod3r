@@ -1,13 +1,14 @@
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 button {
-    margin-right: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
 }
 
 mat-form-field {
   margin-right: 20px;
-  width: 100%
+  width: 100%;
 }

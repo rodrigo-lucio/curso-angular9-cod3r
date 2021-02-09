@@ -1,30 +1,61 @@
 <mat-card>
     <mat-card-title>Nova Ocorrência</mat-card-title>
 
-    <form autocomplete="off">
-        <mat-grid-list cols="4" rowHeight="2:1">
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <form [formGroup]="formOcurrence" (ngSubmit)="saveOccurrence()">
+        <mat-grid-list cols="3" rowHeight="3:0.5">
+            <mat-grid-tile>
                 <mat-form-field>
-                    <input matInput placeholder=" Descrição" [(ngModel)]="occurrence.description" name="description"
-                        required>
+                    <input matInput placeholder="Descrição" formControlName="description">
+                    <mat-error *ngIf="formOcurrence.get('description').errors?.required">Obrigatório</mat-error>
+                    <mat-error *ngIf="formOcurrence.get('description').errors?.minlength">
+                        Mínimo {{this.formOcurrence.get('description').errors?.minlength.requiredLength}} caracteres
+                    </mat-error>
                 </mat-form-field>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-grid-tile>
                 <mat-form-field>
-                    <input matInput placeholder="Placa" [(ngModel)]="occurrence.vehiclePlate" name="vehiclePlate">
+                    <input matInput placeholder="Placa" formControlName="vehiclePlate">
+                    <mat-error *ngIf="formOcurrence.get('vehiclePlate').errors?.required">Obrigatória</mat-error>
+                    <mat-error
+                        *ngIf="formOcurrence.get('vehiclePlate').errors?.minlength || formOcurrence.get('vehiclePlate').errors?.maxlength ">
+                        Deve conter {{this.formOcurrence.get('vehiclePlate').errors?.minlength.requiredLength}}
+                        caracteres
+                    </mat-error>
                 </mat-form-field>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-grid-tile>
                 <mat-form-field>
                     <mat-label>Data da Ocorrência</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="occurrence.date" name="date">
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-error *ngIf="formOcurrence.get('date').errors?.required">Obrigatória</mat-error>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-slide-toggle formControlName="repaired">
+                    Consertado
+                </mat-slide-toggle>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Data do Conserto</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="repairDate">
+                    <mat-error *ngIf="formOcurrence.get('date').errors?.required">Obrigatória</mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input type="number" matInput placeholder="Valor do Conserto" formControlName="repairValue">
+                </mat-form-field>
+            </mat-grid-tile>
         </mat-grid-list>
+
+        <button mat-raised-button type="submit" color="primary">Salvar</button>
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
     </form>
 
-    <button mat-raised-button (click)="saveOccurrence()" color="primary">Salvar</button>
-    <button mat-raised-button (click)="cancel()">Cancelar</button>
+
 </mat-card>

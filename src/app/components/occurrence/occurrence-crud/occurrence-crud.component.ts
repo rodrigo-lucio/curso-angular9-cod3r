@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OccurrenceService } from '../occurrence.service';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -27,34 +28,40 @@ export const MY_DATE_FORMATS = {
 })
 export class OccurrenceCreateComponent implements OnInit {
 
-
-  public occurrence: Occurrence = {
-    id: 0,
-    description: "",
-    date: null,
-    vehiclePlate: "",
-    repaired: true,
-    repairDate: null,
-    repairValue: 0
-  }
-
   private isUpdate: boolean = false;
+  formOcurrence: FormGroup;
 
-  constructor(private occurrenceService: OccurrenceService,
-    private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private occurrenceService: OccurrenceService,
+    private router: Router, private route: ActivatedRoute,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.configureForm();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isUpdate = true;
       this.occurrenceService.readById(id).subscribe(occurrence => {
-        this.occurrence = occurrence;
+        this.formOcurrence.patchValue(occurrence);
       });
     }
   }
 
+  configureForm() {
+    this.formOcurrence = this.formBuilder.group({
+      id: [],
+      description: [null, [Validators.required, Validators.minLength(15)]],
+      date: [null, Validators.required],
+      vehiclePlate: [null, [Validators.required, Validators.minLength(8), Validators.minLength(8)]],
+      repaired: [true],
+      repairDate: [null],
+      repairValue: [0]
+    });
+
+  }
+
   createOccurrence(): void {
-    this.occurrenceService.create(this.occurrence).subscribe(newOccurrence => {
+    this.occurrenceService.create(this.formOcurrence.value).subscribe(newOccurrence => {
       // Caso queira mostrar o retorno do post console.log(newOccurrence);
       this.occurrenceService.showMessage("Ocorrência Criada");
       this.router.navigate(["/occurrence"]);
@@ -62,7 +69,7 @@ export class OccurrenceCreateComponent implements OnInit {
   }
 
   updateOccurrence(): void {
-    this.occurrenceService.update(this.occurrence).subscribe((teste) => {
+    this.occurrenceService.update(this.formOcurrence.value).subscribe((teste) => {
       console.log(teste)
       this.occurrenceService.showMessage("Occorrência alterada com sucesso");
       this.router.navigate(['/occurrence']);
@@ -70,10 +77,12 @@ export class OccurrenceCreateComponent implements OnInit {
   }
 
   saveOccurrence(): void {
-    if (this.isUpdate) {
-      this.updateOccurrence();
-    } else {
-      this.createOccurrence();
+    if (this.formOcurrence.valid) {
+      if (this.isUpdate) {
+        this.updateOccurrence();
+      } else {
+        this.createOccurrence();
+      }
     }
   }
 
