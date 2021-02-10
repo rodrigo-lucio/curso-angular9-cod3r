@@ -53,7 +53,7 @@ export class OccurrenceCreateComponent implements OnInit {
       description: [null, [Validators.required, Validators.minLength(15)]],
       date: [null, Validators.required],
       vehiclePlate: [null, [Validators.required, Validators.minLength(8), Validators.minLength(8)]],
-      repaired: [true],
+      repaired: [false],
       repairDate: [null],
       repairValue: [0]
     });

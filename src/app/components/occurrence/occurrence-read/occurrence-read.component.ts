@@ -4,7 +4,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from './../../confirm-dial
 import { OccurrenceService } from './../occurrence.service';
 import { Occurrence } from './../ocurrence.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -21,6 +21,10 @@ export class OccurrenceReadComponent implements OnInit {
 
   occurrencesData: Occurrence[] = [];
   occurrences = null;
+
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 30, 35];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -57,6 +61,12 @@ export class OccurrenceReadComponent implements OnInit {
 
   updateOccurrence(id: number): void {
     this.router.navigate([`/occurrence/${id}`]);
+  }
+
+  onChangePage(event: PageEvent) {
+    // console.log('aaaa ' + event.pageSize);
+    console.log('aaaa ' + event.pageIndex);
+
   }
 
 }

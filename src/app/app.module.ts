@@ -20,9 +20,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -70,6 +72,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatDialogModule,
     MatSlideToggleModule,
+    MatCheckboxModule,
     MatSnackBarModule,
     HttpClientModule,
     FormsModule,
@@ -81,6 +84,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSortModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    CurrencyMaskModule,
     MomentDateModule,
     MatGridListModule
   ],
