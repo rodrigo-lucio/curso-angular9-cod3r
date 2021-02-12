@@ -90,4 +90,12 @@ export class OccurrenceCreateComponent implements OnInit {
     this.router.navigate(["/occurrence"]);
   }
 
+  cleanValues(): void {
+    if (!this.formOcurrence.value.repaired) {
+      this.formOcurrence.value.repairValue = null;
+      this.formOcurrence.value.repairDate = null;
+      this.formOcurrence.controls['repairDate'].setValue(null);
+      this.formOcurrence.controls['repairValue'].setValue("0,00");
+    }
+  }
 }

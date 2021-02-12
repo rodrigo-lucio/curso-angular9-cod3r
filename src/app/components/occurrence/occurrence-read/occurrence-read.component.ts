@@ -22,23 +22,25 @@ export class OccurrenceReadComponent implements OnInit {
   occurrencesData: Occurrence[] = [];
   occurrences = null;
 
-  length = 100;
+  length = 0;
   pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 30, 35];
+  pageSizeOptions: number[] = [5, 10, 20, 30, 50];
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private occurrenceService: OccurrenceService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
-    this.refresh();
+    this.refresh(0, 10);
   }
 
-  refresh(): void {
-    this.occurrenceService.read().subscribe(occurrences => {
-      this.occurrencesData = occurrences;
+  refresh(page: number = 0, limit: number = 0): void {
+    this.occurrenceService.read(page, limit).subscribe(occurrences => {
+      console.log(occurrences);
+      this.occurrencesData = occurrences.body;
+      this.length = occurrences.headers.get('X-Total-Count')
       this.occurrences = new MatTableDataSource<Occurrence>(this.occurrencesData);
-      this.occurrences.paginator = this.paginator;
     });
   }
 
@@ -64,10 +66,9 @@ export class OccurrenceReadComponent implements OnInit {
   }
 
   onChangePage(event: PageEvent) {
-    // console.log('aaaa ' + event.pageSize);
-    console.log('aaaa ' + event.pageIndex);
-
+    this.refresh(event.pageIndex, event.pageSize);
   }
+
 
 }
 

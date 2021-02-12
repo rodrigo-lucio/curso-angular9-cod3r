@@ -34,7 +34,7 @@
             </mat-grid-tile>
             <mat-grid-tile>
                 <div class="text-inside-grid">
-                    <mat-checkbox formControlName="repaired">
+                    <mat-checkbox formControlName="repaired" (change)="cleanValues()">
                         Consertado
                     </mat-checkbox>
                 </div>
@@ -42,7 +42,7 @@
             <mat-grid-tile>
                 <mat-form-field *ngIf="formOcurrence.get('repaired').value">
                     <mat-label>Data do Conserto</mat-label>
-                    <input matInput [matDatepicker]="picker2" formControlName="repairDate" disabled>
+                    <input matInput [matDatepicker]="picker2" formControlName="repairDate">
                     <mat-error *ngIf="formOcurrence.get('date').errors?.required">Obrigatória</mat-error>
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
@@ -50,7 +50,7 @@
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field *ngIf="formOcurrence.get('repaired').value">
-                    <input matInput currencyMask type="text"
+                    <input matInput currencyMask
                         [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative: false}"
                         placeholder="Valor do Conserto" formControlName="repairValue">
                 </mat-form-field>

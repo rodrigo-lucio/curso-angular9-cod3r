@@ -1,5 +1,5 @@
 import { Occurrence } from './ocurrence.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -30,11 +30,23 @@ export class OccurrenceService {
     );
   }
 
-  read(): Observable<Occurrence[]> {
-    return this.http.get<Occurrence[]>(this.baseUrl).pipe(
+  read(page: number = 0, limit: number = 0): Observable<any> {
+    let params = new HttpParams();
+
+    if (page) {
+      page++;
+      params = params.set('_page', page.toString());
+    }
+
+    if (limit) {
+      params = params.set('_limit', limit.toString());
+    }
+
+    return this.http.get<Occurrence>(this.baseUrl, { params, observe: 'response' }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );;
+
   }
 
   readById(id: string): Observable<Occurrence> {
